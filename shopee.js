@@ -98,15 +98,14 @@ const sendNotifier = (pesan) => {
     console.log("Harga : Rp. " + nominal);
     console.log("Stock : " + CekData.data.item.stock);
     if (CekData.data.item.stock > 0) {
-      const pesan = `
-      *Info ngab!!*\n
-       -Name Product :  ${
-         CekData.data.item.title
-       } \n -Harga : Rp. ${nominal} \n -Stock : ${
+      const pesan = encodeURIComponent(`
+      *Info ngab!!*\n -Name Product :  ${
+        CekData.data.item.title
+      } \n -Harga : Rp. ${nominal} \n -Stock : ${
         CekData.data.item.stock
       }\n -Link Product :  https://shopee.co.id/universal-link/product/${
         id[1].split("/")[0]
-      }/${id[1].split("/")[1].split("?")[0]}`;
+      }/${id[1].split("/")[1].split("?")[0]}`);
       console.log(pesan);
       for (let index = 0; index < 10; index++) {
         await sendNotifier(pesan);
